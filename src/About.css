@@ -1,0 +1,235 @@
+.about-page {
+  max-width: 800px;
+  margin: 2.5rem auto;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background: var(--gradient-card);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #7b2ff244;
+  border: 1.5px solid var(--card-border);
+  color: #fff;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+
+
+.about-page h2 {
+  color: #e63946;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  background: var(--gradient-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+.about-content p {
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+  color: #e0f7fa;
+}
+.about-content ul {
+  margin: 0.7rem 0 1.2rem 2rem;
+  color: #FFD700;
+  font-size: 1.08rem;
+  list-style: disc;
+}
+
+
+/* Milestones Section */
+.about-milestones {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 2.5rem 0 2rem 0;
+  flex-wrap: wrap;
+}
+.milestone-card {
+  background: var(--gradient-card);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px #FFD70033;
+  padding: 1.5rem 2.2rem;
+  text-align: center;
+  min-width: 140px;
+  margin-bottom: 1rem;
+  border: 1.5px solid var(--card-border);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.milestone-card:hover {
+  box-shadow: 0 6px 24px #FFD70099;
+  background: var(--gradient-hover);
+}
+
+
+.milestone-card:hover {
+  transform: translateY(-4px) scale(1.04);
+}
+.milestone-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #FFD700;
+  margin-bottom: 0.4rem;
+}
+
+.milestone-label {
+  font-size: 1.15rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+/* Team Section */
+.about-team {
+  margin: 2.5rem 0 1.5rem 0;
+}
+.about-team h3 {
+  color: #FFD700;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.team-list {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  flex-wrap: wrap;
+}
+.team-member {
+  background: var(--gradient-card);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #FFD70033;
+  padding: 1.2rem 1.1rem 1.5rem 1.1rem;
+  max-width: 220px;
+  text-align: center;
+  border: 1.5px solid var(--card-border);
+  margin-bottom: 1.2rem;
+  transition: transform 0.17s, box-shadow 0.15s;
+}
+.team-member:hover {
+  box-shadow: 0 6px 24px #e63946cc;
+  background: var(--gradient-hover);
+}
+
+
+.team-member:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+.team-photo {
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin: 0 auto 1rem auto;
+  box-shadow: 0 2px 8px #FFD70055;
+  border: 3px solid #FFD700;
+}
+
+.team-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFD700;
+}
+
+.team-role {
+  font-size: 1rem;
+  color: #e63946;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.team-bio {
+  font-size: 0.99rem;
+  color: #fff;
+}
+
+
+/* Partner Clubs Section */
+.about-partners {
+  margin: 2.5rem 0 0.5rem 0;
+}
+.about-partners h3 {
+  color: #FFD700;
+  font-size: 1.4rem;
+  margin-bottom: 1.3rem;
+  text-align: center;
+}
+
+.partners-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 2.2rem;
+  flex-wrap: wrap;
+}
+.partner-club {
+  background: var(--gradient-card);
+  border-radius: 14px;
+  box-shadow: 0 2px 10px #FFD70033;
+  padding: 1rem 1.2rem 0.8rem 1.2rem;
+  text-align: center;
+  border: 1.5px solid var(--card-border);
+  min-width: 110px;
+  margin-bottom: 1.2rem;
+  transition: transform 0.14s, box-shadow 0.15s;
+}
+.partner-club:hover {
+  box-shadow: 0 6px 24px #FFD70099;
+  background: var(--gradient-hover);
+}
+
+
+.partner-club:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+.partner-club img {
+  width: 62px;
+  height: 62px;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  box-shadow: 0 2px 8px #FFD70055;
+  background: #fff;
+}
+
+.partner-name {
+  font-size: 1.03rem;
+  color: #FFD700;
+  font-weight: 600;
+}
+
+
+@media (max-width: 900px) {
+  .about-milestones, .team-list, .partners-list {
+    gap: 1.2rem;
+  }
+}
+@media (max-width: 600px) {
+  .about-page {
+    padding: 1rem 0.5rem;
+  }
+  .milestone-card, .team-member, .partner-club {
+    max-width: 100%;
+    margin: 0 auto 1.2rem auto;
+  }
+  .about-page h2, .about-team h3, .about-partners h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-page {
+    padding: 0.6rem 0.1rem;
+    border-radius: 8px;
+  }
+  .milestone-card, .team-member, .partner-club {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.97rem;
+  }
+  .team-photo {
+    width: 54px;
+    height: 54px;
+  }
+}
