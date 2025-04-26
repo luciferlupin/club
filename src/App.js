@@ -26,8 +26,12 @@ function ContactForm({ upcomingEvents }) {
   const handleSubmit = e => {
     e.preventDefault();
     const message = `Hi, I want to RSVP for ${form.event}!\nEntry Type: ${form.entryType}\nName: ${form.name}, Phone: ${form.phone}`;
-    const url = `https://wa.me/8595121436?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
+    const whatsappNumber = '918595121436'; // Use country code (e.g., 91 for India)
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const win = window.open(url, '_blank');
+    if (!win) {
+      alert('Unable to open WhatsApp. Please check your popup blocker or use WhatsApp Web.');
+    }
     setForm({ name: '', phone: '', event: '', entryType: '' });
   };
   return (
