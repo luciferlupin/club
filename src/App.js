@@ -20,6 +20,53 @@ const EVENTS = [
   },
 ];
 
+function ContactForm({ upcomingEvents }) {
+  const [form, setForm] = React.useState({ name: '', phone: '', event: '', entryType: '' });
+  const handleChange = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  const handleSubmit = e => {
+    e.preventDefault();
+    const message = `Hi, I want to RSVP for ${form.event}!\nEntry Type: ${form.entryType}\nName: ${form.name}, Phone: ${form.phone}`;
+    const url = `https://wa.me/8595121436?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+    setForm({ name: '', phone: '', event: '', entryType: '' });
+  };
+  return (
+    <form className="rsvp-form" onSubmit={handleSubmit} autoComplete="off">
+      <input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        value={form.name}
+        onChange={handleChange}
+        required
+        autoComplete="off"
+      />
+      <input
+        type="tel"
+        name="phone"
+        placeholder="Phone Number"
+        value={form.phone}
+        onChange={handleChange}
+        required
+        autoComplete="off"
+      />
+      <select name="event" value={form.event} onChange={handleChange} required>
+        <option value="">Select Event</option>
+        {upcomingEvents.map(ev => (
+          <option key={ev.title} value={ev.title}>{ev.title} ({ev.date.toDateString()})</option>
+        ))}
+      </select>
+      <select name="entryType" value={form.entryType} onChange={handleChange} required>
+        <option value="">Entry Type</option>
+        <option value="Couple">Couple</option>
+        <option value="Stag">Stag</option>
+        <option value="Table">Table</option>
+      </select>
+      <button type="submit">RSVP via WhatsApp</button>
+    </form>
+  );
+}
+
 function App() {
   const [form, setForm] = useState({ name: '', phone: '', event: '', entryType: '' });
   const [selectedEvent, setSelectedEvent] = useState(null);
@@ -67,58 +114,9 @@ function App() {
           <p className="hero-tagline" style={{ marginBottom: '1.3rem' }}>
   Where Nights Come Alive. <span role="img" aria-label="sparkles">✨</span>
 </p>
-          <a
-  href="https://wa.me/8595121436?text=Hi%20VibeX%20Club!%20I%20want%20to%20book%20my%20spot%20for%20the%20next%20event."
-  className="cta-btn"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  Book Your Spot
-</a>
+
         </section>
 
-        <section className="intro-section">
-          <h2>Welcome to VibeX</h2>
-          <p>
-            Step into the city’s most electrifying club experience! Enjoy world-class DJs, themed nights, and VIP luxury in a space designed for unforgettable memories.
-          </p>
-          <ul className="features-list">
-            <li><span role="img" aria-label="dj">🎧</span> World-class DJs</li>
-            <li><span role="img" aria-label="vip">🥂</span> VIP Experiences</li>
-            <li><span role="img" aria-label="party">🕺</span> Themed Party Nights</li>
-            <li><span role="img" aria-label="camera">📸</span> Stunning Event Gallery</li>
-          </ul>
-        </section>
-
-        <div className="divider"></div>
-
-        <section className="why-vibex-section">
-  <h2>Why Choose VibeX?</h2>
-  <div className="why-vibex-features">
-    <div className="why-vibex-card">
-      <span role="img" aria-label="security" className="why-vibex-icon">🛡️</span>
-      <h3>Safe & Inclusive</h3>
-      <p>Enjoy a secure, welcoming environment where everyone can party with peace of mind.</p>
-    </div>
-    <div className="why-vibex-card">
-      <span role="img" aria-label="sound" className="why-vibex-icon">🔊</span>
-      <h3>Top-Tier Sound</h3>
-      <p>Experience world-class sound and lighting for an immersive night out.</p>
-    </div>
-    <div className="why-vibex-card">
-      <span role="img" aria-label="star" className="why-vibex-icon">🌟</span>
-      <h3>Celebrity Nights</h3>
-      <p>Dance alongside celebrity DJs and special guests every month.</p>
-    </div>
-    <div className="why-vibex-card">
-      <span role="img" aria-label="luxury" className="why-vibex-icon">💎</span>
-      <h3>Luxury Ambiance</h3>
-      <p>Indulge in a premium atmosphere with stunning interiors and VIP service.</p>
-    </div>
-  </div>
-</section>
-
-        <div className="divider"></div>
 
         <section className="calendar-section">
           <h2>Upcoming Events</h2>
@@ -140,37 +138,7 @@ function App() {
 
         <section className="rsvp-section">
           <h2>RSVP Now</h2>
-          <form className="rsvp-form" onSubmit={handleRSVP}>
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={form.name}
-              onChange={handleFormChange}
-              required
-            />
-            <input
-              type="tel"
-              name="phone"
-              placeholder="Phone Number"
-              value={form.phone}
-              onChange={handleFormChange}
-              required
-            />
-            <select name="event" value={form.event} onChange={handleFormChange} required>
-              <option value="">Select Event</option>
-              {upcomingEvents.map(ev => (
-                <option key={ev.title} value={ev.title}>{ev.title} ({ev.date.toDateString()})</option>
-              ))}
-            </select>
-            <select name="entryType" value={form.entryType} onChange={handleFormChange} required>
-              <option value="">Entry Type</option>
-              <option value="Couple">Couple</option>
-              <option value="Stag">Stag</option>
-              <option value="Table">Table</option>
-            </select>
-            <button type="submit">RSVP via WhatsApp</button>
-          </form>
+          <ContactForm upcomingEvents={upcomingEvents} />
         </section>
       </>
     );
